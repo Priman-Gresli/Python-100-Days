@@ -44,3 +44,34 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+
+    def increase_length(self):
+        snake = Turtle()
+        snake.penup()
+        snake.shape("square")
+        snake.color("white")
+
+
+        if self.head.heading() == DOWN:
+            coordinate=self.segments[0].position()
+            new_coordinate=(coordinate[0],coordinate[1]-20)
+            snake.goto(new_coordinate)
+            self.segments.append(snake)
+
+        if self.head.heading() == UP:
+            coordinate = self.segments[0].position()
+            new_coordinate = (coordinate[0], coordinate[1] + 20)
+            snake.goto(new_coordinate)
+            self.segments.append(snake)
+
+        if self.head.heading() == RIGHT:
+            coordinate = self.segments[0].position()
+            new_coordinate = (coordinate[0]+20, coordinate[1])
+            snake.goto(new_coordinate)
+            self.segments.append(snake)
+
+        if self.head.heading() == LEFT:
+            coordinate = self.segments[0].position()
+            new_coordinate = (coordinate[0]-20, coordinate[1])
+            snake.goto(new_coordinate)
+            self.segments.append(snake)
